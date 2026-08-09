@@ -1,0 +1,20 @@
+# Thư mục build chứa file biên dịch (rất nặng, không đưa lên GitHub)
+Debug/
+Release/
+
+# Các file nhị phân và file trung gian sinh ra khi Build
+*.o
+*.d
+*.su
+*.elf
+*.hex
+*.bin
+*.map
+
+# Cấu hình cá nhân của STM32CubeIDE / Eclipse (mỗi máy một khác)
+.settings/
+*.launch
+
+# File rác hệ điều hành
+Thumbs.db
+.DS_Store
