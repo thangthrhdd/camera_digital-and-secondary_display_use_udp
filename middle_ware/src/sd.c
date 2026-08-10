@@ -409,9 +409,9 @@ MenuEvent_t adc_handle(uint16_t bufff[4])
     static uint8_t is_released = 1;
 
     // 1. Kiểm tra nút nhấn SW (SELECT)
-    if (bufff[3] == EVENT_SELECT) {
+    if (bufff[4] == EVENT_SELECT) {
         return EVENT_SELECT;
-    }
+    }//sửa ở đây cho cam
 
     // 2. Mở rộng vùng trung tâm (Deadzone từ 1500 đến 3500)
     // Giúp triệt tiêu hoàn toàn độ rung/quán tính lò xo khi cần gạt bật về giữa

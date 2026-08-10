@@ -320,10 +320,10 @@ void Menu_Render(SPI_Handle_t* hspi)
         item_index++;
     }
 }
-extern volatile uint16_t adc_results[4];
+extern volatile uint16_t adc_results[5];
 App_state_t Menu_Event(MenuEvent_t input, SPI_Handle_t *hspi)
 {
-	Battery_Init(adc_results[0],&spi1);
+	Battery_Init(adc_results[0],adc_results[3],&spi1);
     if (current_sys_mode == MODE_SD)
     {
         if (current_sd_app == SD_APP_MENU)

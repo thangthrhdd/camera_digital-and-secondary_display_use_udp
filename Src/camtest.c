@@ -322,7 +322,7 @@ void gpio_spi()
 
 
 }
-volatile uint16_t adc_results[4];
+volatile uint16_t adc_results[5];
 void adc_dma_init()
 {
     adc_dma.dmax = DMA2;
@@ -341,7 +341,7 @@ void adc_dma_init()
 
     adc_dma.dmay.per_addr = (uint32_t)&(ADC1->DR);  // Địa chỉ nguồn: ADC1 Data Register
     adc_dma.dmay.mem0_addr = (uint32_t)adc_results;  // Địa chỉ đích: Mảng RAM 3 phần tử
-    adc_dma.dmay.number_of_data = 3;               // Chuyển đúng 3 kênh (Rank 1, 2, 3)
+    adc_dma.dmay.number_of_data = 4;               // Chuyển đúng 3 kênh (Rank 1, 2, 3)
 
     adc_dma.dmay.direct_mode_dis = DISABLE;
     adc_dma.dmay.Mem_burst_transfer = 0;
@@ -362,7 +362,7 @@ void adc_init()
 {
     // 1. Cấu hình các kênh ADC (Channel & Rank)
     adc1.adcx = ADC1;
-    adc1.adcy.length_of_cvst = 2; // Quét 3 kênh (Length = N - 1 = 2)
+    adc1.adcy.length_of_cvst = 3; // Quét 3 kênh (Length = N - 1 = 2)
     adc1.adcy.resolution = 0;     // 12-bit
     adc1.adcy.cycle = 7;          // Sample time
 
@@ -377,7 +377,11 @@ void adc_init()
     adc1.adcy.channel = 9;
     adc1.adcy.rank = 1;
     ADC_Init(&adc1);
-
+    adc1.adcy.channel=17;
+    adc1.adcy.rank = 4;
+    ADC_Init(&adc1);
+    ADC1_PCLK_EN();
+    *(volatile  uint32_t*)(ADC_BASEADDR+0x300+0x04)|= 1<<23;
     // 2. Cấu hình GPIO Analog (PB0 - Ch8, PA3 - Ch3, PA4 - Ch4)
     GPIO_Handle_t x;
     x.gpiox = GPIOB;
@@ -386,7 +390,7 @@ void adc_init()
     x.gpioy.ospeed = GPIO_VRY_HIGH_SPEED;
     x.gpioy.pin = 0;
     x.gpioy.alt_num = GPIO_PIN_AF0;
-    x.gpioy.pupd = GPIO_PU;
+    x.gpioy.pupd = GPIO_NO_PUPD;
     GPIO_Init(&x);
     x.gpioy.pin = 1;
     GPIO_Init(&x);
@@ -591,7 +595,7 @@ void DCMI_IRQHandler()
 void EXTI0_IRQHandler ()
 {
 	if(GPIO_ReadPin(GPIOD,GPIO_PIN_0)==1)
-	adc_results[3]=EVENT_NONE;
-	else adc_results[3]=EVENT_SELECT;
+	adc_results[4]=EVENT_NONE;
+	else adc_results[4]=EVENT_SELECT;
 	GPIO_IRQ_Handle(0);
 }

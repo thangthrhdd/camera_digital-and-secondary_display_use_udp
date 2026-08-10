@@ -11,7 +11,7 @@
 #include "tftcolor.h"
 #include "spi.h"
 #include "stdint.h"
-void Battery_Init(uint16_t adc_battery,SPI_Handle_t*spi1);
+void Battery_Init(uint16_t adc_battery,uint16_t adc_vrefint, SPI_Handle_t* spi1);
 
 
 #endif /* INC_BATTERY_H_ */
