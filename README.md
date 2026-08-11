@@ -12,7 +12,7 @@ A embedded digital camera project built on the **STM32F407** microcontroller. Fe
 
 ---
 
-## ⚙️ Technical Specifications
+## Technical Specifications
 
 | Category | Specification & Features |
 | :--- | :--- |
@@ -23,7 +23,7 @@ A embedded digital camera project built on the **STM32F407** microcontroller. Fe
 
 ---
 
-## 🛠️ Key Hardware Components
+##  Key Hardware Components
 
 * **Microcontroller Board:** STM32F407VGT6 (ARM Cortex-M4 Core @ 168 MHz)
 * **Camera Module:** OV7670 CMOS Camera Module
@@ -33,7 +33,7 @@ A embedded digital camera project built on the **STM32F407** microcontroller. Fe
 
 ---
 
-## 🔌 Hardware Connections (Pinout Mapping)
+## Hardware Connections (Pinout Mapping)
 
 ### 1. OV7670 Camera Interface
 | STM32F4 Pin | OV7670 Pin | Description |
@@ -73,7 +73,7 @@ A embedded digital camera project built on the **STM32F407** microcontroller. Fe
 
 ---
 
-## 🚀 How to Run
+##  How to Run
 1. Insert a FAT32-formatted SD Card (8GB - 16GB).
 2. Flash the firmware to STM32F407 using **STM32CubeIDE** or **ST-Link Utility**.
 3. Power up the board, use the **Joystick** to toggle between Live Preview and Playback mode.
