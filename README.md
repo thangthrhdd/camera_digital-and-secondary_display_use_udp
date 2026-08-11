@@ -81,3 +81,51 @@ A embedded digital camera project built on the **STM32F407** microcontroller. Fe
 2. Open the project and build `camtest.c` located in the `Src/` directory.
 3. Flash the firmware to STM32F407 using **STM32CubeIDE** or **ST-Link Utility**.
 4. Power up the board, use the **Joystick** to toggle between Live Preview and Playback mode.
+
+
+# 🖥️ STM32F4 Secondary Display via Ethernet (UDP)
+
+An embedded secondary display project built on the **STM32F407** microcontroller. Features real-time frame buffer streaming over Ethernet using the **UDP protocol** to display video/screen feeds on an ST7789 TFT LCD.
+
+---
+
+## ✨ Key Features
+
+* **Real-time UDP Streaming:** Receives and renders display frame buffers directly over Ethernet using a lightweight UDP packet parser.
+* **TFT LCD Rendering:** Fast SPI transfer and rendering on an **ST7789** display module (QVGA 320x240 resolution).
+* **Hardware Controls:** **Joystick** support for navigating menus, adjusting display modes, and controlling stream settings.
+* **Battery Level Sensing:** Integrated ADC voltage divider circuit for real-time battery level monitoring.
+
+---
+
+## 🛠️ Key Hardware Components
+
+* **Microcontroller:** STM32F407VGT6 (ARM Cortex-M4 Core @ 168 MHz)
+* **Ethernet PHY:** DP83848 / LAN8720 (RMII Interface)
+* **Display Module:** ST7789 TFT LCD Controller (SPI2 Interface)
+* **User Controls:** 5-axis Analog Joystick (ADC & GPIO)
+* **Power Monitoring:** Resistor Voltage Divider ($R_1 / R_2$) connected to `ADC (Vbat)`
+
+---
+
+## 🔌 Hardware Connections (Pinout Mapping)
+
+### Ethernet PHY (RMII) & Display Interface
+| STM32F4 Pin | Peripheral Pin | Function / Description |
+| :---: | :---: | :--- |
+| `PB3` | ST7789 SCK | SPI Clock |
+| `PB4` | ST7789 MOSI | SPI Master Out |
+| `PD5` | ST7789 CS | Chip Select |
+| `PD6` | ST7789 DC | Data / Command Control |
+| `PD7` | ST7789 RST | Reset Line |
+| `PA1`, `PA2`, `PC1`, `PC4`, `PC5` | Ethernet PHY | RMII TX/RX & Clock lines |
+| `PC0` | ADC (Vbat) | Battery Voltage Divider Input |
+
+---
+
+## 🚀 How to Run
+
+1. Connect the STM32F4 board to your local network/PC using an RJ45 Ethernet cable.
+2. Build and flash the firmware (`camtest.c` / UDP secondary display module) using **STM32CubeIDE** or **ST-Link Utility**.
+3. Run the Python / C++ UDP video streaming script on your PC to start broadcasting frames over the network.
+4. Power up the board to view the real-time secondary display stream on the ST7789 LCD!
