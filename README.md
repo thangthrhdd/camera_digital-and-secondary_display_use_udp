@@ -184,7 +184,7 @@ flowchart LR
 
 ---
 
-### 4. ADC & User Controls (Joystick, Battery, EXTI)
+### 4. ADC & User Controls (Joystick, EXTI)
 | STM32F4 Pin | Peripheral Channel | Function / Description | Mode / Configuration |
 | :---: | :---: | :--- | :---: |
 | `PA3` | ADC Channel | Joystick VRy (Analog Input) | Analog Mode |
