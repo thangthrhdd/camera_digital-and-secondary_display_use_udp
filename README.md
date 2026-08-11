@@ -5,6 +5,8 @@ A embedded digital camera project built on the **STM32F407** microcontroller. Fe
 <p align="center">
   <img width="500" alt="STM32F4 Digital Camera Setup" src="https://github.com/user-attachments/assets/29df12bd-1fe8-4cc1-81f7-9d79316af1ed" />
 </p>
+<img width="1184" height="1034" alt="08642d1e-2602-424f-9d10-08d034f2a617" src="https://github.com/user-attachments/assets/8640931c-3f43-4db8-a8fa-4cd694b4b0c4" />
+
 
 ---
 
@@ -35,18 +37,39 @@ A embedded digital camera project built on the **STM32F407** microcontroller. Fe
 ### 1. OV7670 Camera Interface
 | STM32F4 Pin | OV7670 Pin | Description |
 | :---: | :---: | :--- |
-| `PA8` | XCLK | System Clock Out |
-| `PB6` | SCL | SCCB I2C Clock |
-| `PB7` | SDA | SCCB I2C Data |
-| `PC6-PC11` | D0 - D5 | DVP Data Lines |
+| `PC9` | XCLK |
+| `PA6` | PCLK |
+| `PA4` | HS|
+| `PA7` | VS|
+| `PB10` | SCL | SCCB I2C CLock |
+| `PB11` | SDA | SCCB I2C Data  |
+| `PA9` | D0 | DVP Data Lines |
+| `PA10`| D1 | DVP Data Lines |
+| `PC8` | D2 | DVP Data Lines |
+| `PE1` | D3 | DVP Data Lines |
+| `PC11`| D4 | DVP Data Lines |
+| `PB6` | D5 | DVP Data Lines |
+| `PB8` | D6 | DVP Data Lines |
+| `PB9` | D7 | DVP Data Lines |
 
-### 2. ST7789 Display & Joystick Interface
+
+### 2. ST7789 Display & Joystick Interface & SD_CARD
 | STM32F4 Pin | Peripheral Pin | Function |
 | :---: | :---: | :--- |
-| `PA5` | ST7789 SCL | SPI Clock |
-| `PA7` | ST7789 SDA | SPI Master Out |
-| `PB0` | Joystick VRx/VRy | Analog / Digital Navigation |
-| `PB1` | Joystick SW | Shutter / Select Button |
+| `PB3` | ST7789 SCK | SPI Clock |
+| `PB4` | ST7789 MOSI | SPI Master Out |
+| `PB5` | ST7789 MISO | SPI Master IN  |
+| `PD5` | ST7789 CS |
+| `PD6` | ST7789 DC |
+| `PD7` | ST7789 RST|
+| `PB13`| SD_CARD SCK | SPI Clock |
+| `PC3` | SD_CARD MOSI | SPI Master Out |
+| `PC2` | SD_CARD MISO | SPI Master IN  |
+| `PB12`| SD_CARD CS |
+| `PA2` | Joystick VRy | Analog  |
+| `PB0` | Joystick VRx | Analog  |
+| `PD0` | SW | Select |
+| `PB1` | ADC_Battery manager|
 
 ---
 
