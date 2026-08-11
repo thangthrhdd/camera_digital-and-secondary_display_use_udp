@@ -33,6 +33,7 @@ A embedded digital camera project built on the **STM32F407** microcontroller. Fe
 
 
 ---
+## Block diagram
 <img width="1024" height="602" alt="image" src="https://github.com/user-attachments/assets/01e869b0-3c37-4073-a9d7-cdf5416788b1" />
 
 ## Hardware Connections (Pinout Mapping)
