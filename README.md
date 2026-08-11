@@ -78,5 +78,6 @@ A embedded digital camera project built on the **STM32F407** microcontroller. Fe
 
 ##  How to Run
 1. Insert a FAT32-formatted SD Card (8GB - 16GB).
-2. Flash the firmware to STM32F407 using **STM32CubeIDE** or **ST-Link Utility**.
-3. Power up the board, use the **Joystick** to toggle between Live Preview and Playback mode.
+2. Open the project and build `camtest.c` located in the `Src/` directory.
+3. Flash the firmware to STM32F407 using **STM32CubeIDE** or **ST-Link Utility**.
+4. Power up the board, use the **Joystick** to toggle between Live Preview and Playback mode.
