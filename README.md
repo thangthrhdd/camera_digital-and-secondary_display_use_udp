@@ -97,6 +97,9 @@ An embedded secondary display project built on the **STM32F407** microcontroller
 * **Battery Level Sensing:** Integrated ADC voltage divider circuit for real-time battery level monitoring.
 
 ---
+<img width="786" height="591" alt="40d63e86-98e1-453f-a913-58c8dee90e77 (1)" src="https://github.com/user-attachments/assets/d7840fc0-2d20-4eb6-bcdd-36cfcba3a238" />
+<img width="845" height="647" alt="b65cd862-a65d-4f94-b268-376c863575db" src="https://github.com/user-attachments/assets/47f6064b-e313-4ede-8f40-95dd5e7b5cd0" />
+
 
 ##  Key Hardware Components
 
