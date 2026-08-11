@@ -94,7 +94,6 @@ An embedded secondary display project built on the **STM32F407** microcontroller
 * **Real-time UDP Streaming:** Receives and renders display frame buffers directly over Ethernet using a lightweight UDP packet parser.
 * **TFT LCD Rendering:** Fast SPI transfer and rendering on an **ST7789** display module (QVGA 320x240 resolution).
 * **Hardware Controls:** **Joystick** support for navigating menus, adjusting display modes, and controlling stream settings.
-* **Battery Level Sensing:** Integrated ADC voltage divider circuit for real-time battery level monitoring.
 
 ---
 <img width="786" height="591" alt="40d63e86-98e1-453f-a913-58c8dee90e77 (1)" src="https://github.com/user-attachments/assets/d7840fc0-2d20-4eb6-bcdd-36cfcba3a238" />
@@ -104,13 +103,43 @@ An embedded secondary display project built on the **STM32F407** microcontroller
 ##  Key Hardware Components
 
 * **Microcontroller:** STM32F407VGT6 (ARM Cortex-M4 Core @ 168 MHz)
-* **Ethernet PHY:** DP83848 / LAN8720 (RMII Interface)
+* **Ethernet PHY:**  LAN8720 (RMII Interface)
 * **Display Module:** ST7789 TFT LCD Controller (SPI2 Interface)
 * **User Controls:** 5-axis Analog Joystick (ADC & GPIO)
-* **Power Monitoring:** Resistor Voltage Divider ($R_1 / R_2$) connected to `ADC (Vbat)`
 
 ---
+## Block Diagram 
+```mermaid
+flowchart LR
+    subgraph MCU["STM32F4 Discovery"]
+        ETH_PORT["ETH (RMII)"]
+        SPI1_PORT["SPI1"]
+        SPI2_PORT["SPI2"]
+        ADC_PORT["ADC / EXTI"]
+    end
 
+    subgraph LAN["Ethernet PHY (LAN8720)"]
+        LAN_PINS["REF_CLK, TX_EN, TXD0, TXD1<br/>RXD0, RXD1, MDC, MDIO, CRS_DV"]
+    end
+
+    subgraph ST["LCD (ST7789 SPI)"]
+        ST_PINS["SCK, MOSI, DC, RST, CS"]
+    end
+
+    subgraph SDC["SD Card Module"]
+        SDC_PINS["SCK, MOSI, MISO, CS"]
+    end
+
+    subgraph JS["Joystick"]
+        JS_PINS["VRx, VRy, SW"]
+    end
+
+    %% Connections
+    ETH_PORT <--> LAN_PINS
+    SPI1_PORT --> ST_PINS
+    SPI2_PORT <--> SDC_PINS
+    JS_PINS --> ADC_PORT
+```
 ##  Hardware Connections (Pinout Mapping)
 
 ### 1. Ethernet PHY Interface (RMII Protocol)
