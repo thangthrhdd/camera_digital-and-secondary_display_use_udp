@@ -392,7 +392,7 @@ volatile uint8_t app_mode = 0;    // 0 = Đang ở màn hình Menu, 1 = Đang ch
 
 
 // Hàm đọc ADC và sinh sự kiện 1 lần (Edge detection)
-MenuEvent_t adc_handle(uint16_t bufff[4])
+MenuEvent_t adc_handle(uint16_t bufff[5])
 {
     uint16_t x_p = 0, y_p = 0;
 

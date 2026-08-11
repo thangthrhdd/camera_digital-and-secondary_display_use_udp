@@ -45,5 +45,5 @@ uint8_t SD_Write_Sector(uint32_t sector_address, uint8_t *data_buffer);
 uint8_t SD_Read_Sector(uint32_t sector_address, uint8_t *data_buffer);
 uint8_t SPI_Transfer(uint8_t data,SPI_RegDef_t * spiport);
 void Render_Menu(SPI_Handle_t* hspi);
-uint8_t adc_handle(uint16_t bufff[4]);
+uint8_t adc_handle(uint16_t bufff[5]);
 #endif /* INC_SD_H_ */
