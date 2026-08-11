@@ -73,6 +73,7 @@ flowchart TD
 
     JOY --> ADC_GPIO
     BAT --> ADC_GPIO
+```
 ## Hardware Connections (Pinout Mapping)
 
 ### 1. OV7670 Camera Interface
