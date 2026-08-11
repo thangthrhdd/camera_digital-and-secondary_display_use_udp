@@ -83,13 +83,13 @@ A embedded digital camera project built on the **STM32F407** microcontroller. Fe
 4. Power up the board, use the **Joystick** to toggle between Live Preview and Playback mode.
 
 
-# 🖥️ STM32F4 Secondary Display via Ethernet (UDP)
+#  STM32F4 Secondary Display via Ethernet (UDP)
 
 An embedded secondary display project built on the **STM32F407** microcontroller. Features real-time frame buffer streaming over Ethernet using the **UDP protocol** to display video/screen feeds on an ST7789 TFT LCD.
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
 * **Real-time UDP Streaming:** Receives and renders display frame buffers directly over Ethernet using a lightweight UDP packet parser.
 * **TFT LCD Rendering:** Fast SPI transfer and rendering on an **ST7789** display module (QVGA 320x240 resolution).
@@ -98,7 +98,7 @@ An embedded secondary display project built on the **STM32F407** microcontroller
 
 ---
 
-## 🛠️ Key Hardware Components
+##  Key Hardware Components
 
 * **Microcontroller:** STM32F407VGT6 (ARM Cortex-M4 Core @ 168 MHz)
 * **Ethernet PHY:** DP83848 / LAN8720 (RMII Interface)
@@ -108,24 +108,56 @@ An embedded secondary display project built on the **STM32F407** microcontroller
 
 ---
 
-## 🔌 Hardware Connections (Pinout Mapping)
+##  Hardware Connections (Pinout Mapping)
 
-### Ethernet PHY (RMII) & Display Interface
-| STM32F4 Pin | Peripheral Pin | Function / Description |
-| :---: | :---: | :--- |
-| `PB3` | ST7789 SCK | SPI Clock |
-| `PB4` | ST7789 MOSI | SPI Master Out |
-| `PD5` | ST7789 CS | Chip Select |
-| `PD6` | ST7789 DC | Data / Command Control |
-| `PD7` | ST7789 RST | Reset Line |
-| `PA1`, `PA2`, `PC1`, `PC4`, `PC5` | Ethernet PHY | RMII TX/RX & Clock lines |
-| `PC0` | ADC (Vbat) | Battery Voltage Divider Input |
+### 1. Ethernet PHY Interface (RMII Protocol)
+| STM32F4 Pin | Peripheral Signal | Configuration / Function | Mode / AF |
+| :---: | :---: | :--- | :---: |
+| `PA1` | ETH_RMII_REF_CLK | Reference Clock Input | AF11 |
+| `PA2` | ETH_MDIO | Management Data Input/Output | AF11 |
+| `PA7` | ETH_RMII_CRS_DV | Carrier Sense / Data Valid | AF11 |
+| `PB11` | ETH_RMII_TX_EN | Transmit Enable | AF11 |
+| `PB12` | ETH_RMII_TXD0 | Transmit Data Line 0 | AF11 |
+| `PB13` | ETH_RMII_TXD1 | Transmit Data Line 1 | AF11 |
+| `PC1` | ETH_MDC | Management Data Clock | AF11 |
+| `PC4` | ETH_RMII_RXD0 | Receive Data Line 0 | AF11 |
+| `PC5` | ETH_RMII_RXD1 | Receive Data Line 1 | AF11 |
 
 ---
 
-## 🚀 How to Run
+### 2. ST7789 Display Interface (SPI1)
+| STM32F4 Pin | Peripheral Pin | Function / Description | Mode / AF |
+| :---: | :---: | :--- | :---: |
+| `PB3` | SCK | SPI1 Clock | AF5 |
+| `PB4` | MISO / MOSI | SPI1 Data Line | AF5 |
+| `PB5` | MOSI / MISO | SPI1 Data Line | AF5 |
+| `PB6` | DC (RS) | Data / Command Select Line | Output (Pull-Up) |
+| `PB7` | RST | Hardware Reset Line | Output (Pull-Up) |
+| `PB9` | CS | Chip Select Line | Output (Pull-Up) |
+
+---
+
+### 3. SD Card / Secondary SPI Interface (SPI2)
+| STM32F4 Pin | Peripheral Pin | Function / Description | Mode / AF |
+| :---: | :---: | :--- | :---: |
+| `PB10` | SCK | SPI2 Clock Line | AF5 |
+| `PC2` | MISO | SPI2 Master In Slave Out | GPIO / Alternate |
+| `PC3` | MOSI | SPI2 Master Out Slave In | GPIO / Alternate |
+| `PD2` | CS | Chip Select  GPIO / Alternate |
+
+---
+
+### 4. ADC & User Controls (Joystick, Battery, EXTI)
+| STM32F4 Pin | Peripheral Channel | Function / Description | Mode / Configuration |
+| :---: | :---: | :--- | :---: |
+| `PA3` | ADC Channel | Joystick VRy (Analog Input) | Analog Mode |
+| `PA4` | ADC Channel | Joystick VRx (Analog Input) | Analog Mode |
+| `PD1` | EXTI Line 1 | Joystick Switch / Button Interrupt | EXTI Rising Trigger (Pull-Up) |
+
+
+##  How to Run
 
 1. Connect the STM32F4 board to your local network/PC using an RJ45 Ethernet cable.
-2. Build and flash the firmware (`camtest.c` / UDP secondary display module) using **STM32CubeIDE** or **ST-Link Utility**.
+2. Build and flash the firmware (`tfteth.c` / UDP secondary display module) using **STM32CubeIDE** or **ST-Link Utility**.
 3. Run the Python / C++ UDP video streaming script on your PC to start broadcasting frames over the network.
 4. Power up the board to view the real-time secondary display stream on the ST7789 LCD!
