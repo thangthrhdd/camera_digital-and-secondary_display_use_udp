@@ -78,7 +78,7 @@ A embedded digital camera project built on the **STM32F407** microcontroller. Fe
 
 ##  How to Run
 1. Insert a FAT32-formatted SD Card (8GB - 16GB).
-2. Open the project and build `camtest.c` located in the `Src/` directory.
+2. Open the project and build `Src/camtest.c`.
 3. Flash the firmware to STM32F407 using **STM32CubeIDE** or **ST-Link Utility**.
 4. Power up the board, use the **Joystick** to toggle between Live Preview and Playback mode.
 
@@ -190,6 +190,6 @@ flowchart LR
 ##  How to Run
 
 1. Connect the STM32F4 board to your local network/PC using an RJ45 Ethernet cable.
-2. Build and flash the firmware (`tfteth.c` / UDP secondary display module) using **STM32CubeIDE** or **ST-Link Utility**.
+2. Build and flash the firmware (`Src/tfteth.c` / UDP secondary display module) using **STM32CubeIDE** or **ST-Link Utility**.
 3. Run the Python / C++ UDP video streaming script on your PC to start broadcasting frames over the network.
 4. Power up the board to view the real-time secondary display stream on the ST7789 LCD!
