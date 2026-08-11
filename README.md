@@ -30,11 +30,14 @@ A embedded digital camera project built on the **STM32F407** microcontroller. Fe
 * **Display Module:** ST7789 TFT LCD Controller (320x240)
 * **User Controls:** Joystick Module (Up/Down/Left/Right/Select)
 * **Storage:** SD Card Reader Module (SDIO / SPI)
+
+
+---
 ```mermaid
-graph TD
+flowchart TD
     subgraph STM32F4["STM32F407 Microcontroller"]
         I2C["I2C (SCCB)"]
-        MCO["MCO"]
+        MCO["MCO (Clock)"]
         DCMI["DCMI"]
         SPI_LCD["SPI (Display)"]
         SPI_SD["SPI (SD Card)"]
@@ -44,11 +47,11 @@ graph TD
     subgraph Camera["Camera (OV7670)"]
         CAM_SCCB["SCL / SDA"]
         CAM_XCLK["XCLK"]
-        CAM_DCMI["PCLK, VSYNC, HREF<br/>D[0:7]"]
+        CAM_DCMI["PCLK, VSYNC, HREF, D[0:7]"]
     end
 
     subgraph Display["LCD (ST7789)"]
-        DISP_PIN["SCK, MOSI, MISO<br/>CS, DC, RST"]
+        DISP_PIN["SCK, MOSI, MISO, CS, DC, RST"]
     end
 
     subgraph SD["SD Card Reader"]
@@ -60,18 +63,16 @@ graph TD
         BAT["Battery Manager"]
     end
 
-    %% Connections
+    %% Routing / Connections
     I2C <--> CAM_SCCB
     MCO --> CAM_XCLK
-    DCMI <--- CAM_DCMI
+    CAM_DCMI --> DCMI
 
     SPI_LCD --> DISP_PIN
     SPI_SD <--> SD_PIN
 
-    Control ---> ADC_GPIO
-
----
-
+    JOY --> ADC_GPIO
+    BAT --> ADC_GPIO
 ## Hardware Connections (Pinout Mapping)
 
 ### 1. OV7670 Camera Interface
