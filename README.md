@@ -83,7 +83,7 @@ A embedded digital camera project built on the **STM32F407** microcontroller. Fe
 4. Power up the board, use the **Joystick** to toggle between Live Preview and Playback mode.
 
 
-#  STM32F4 Secondary Display via Ethernet (UDP)
+#  STM32F4 Secondary Display use Ethernet (UDP)
 
 An embedded secondary display project built on the **STM32F407** microcontroller. Features real-time frame buffer streaming over Ethernet using the **UDP protocol** to display video/screen feeds on an ST7789 TFT LCD.
 
