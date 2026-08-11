@@ -196,5 +196,6 @@ flowchart LR
 
 1. Connect the STM32F4 board to your local network/PC using an RJ45 Ethernet cable.
 2. Build and flash the firmware (`Src/tfteth.c` / UDP secondary display module) using **STM32CubeIDE** or **ST-Link Utility**.
-3. Run the Python / C++ UDP video streaming script on your PC to start broadcasting frames over the network.
+3. Setup VDD driver in VDD.control file and run file Stm32ExtendedMonitor.exe in this link 
+https://drive.google.com/drive/folders/1x2NRsINDWNpALu-xDVFK5wdgYWnJs7ba?usp=drive_link
 4. Power up the board to view the real-time secondary display stream on the ST7789 LCD!
