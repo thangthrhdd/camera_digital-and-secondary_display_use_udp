@@ -60,8 +60,8 @@ A embedded digital camera project built on the **STM32F407** microcontroller. Fe
 | STM32F4 Pin | Peripheral Pin | Function |
 | :---: | :---: | :--- |
 | `PB3` | ST7789 SCK | SPI Clock |
-| `PB4` | ST7789 MOSI | SPI Master Out |
-| `PB5` | ST7789 MISO | SPI Master IN (Optional) |
+| `PB4` | ST7789 MISO | SPI Master IN |
+| `PB5` | ST7789 MOSI | SPI Master OUT (Optional) |
 | `PD5` | ST7789 CS | Chip Select |
 | `PD6` | ST7789 DC | Data/Command |
 | `PD7` | ST7789 RST | Reset |
@@ -166,8 +166,8 @@ flowchart LR
 | STM32F4 Pin | Peripheral Pin | Function / Description | Mode / AF |
 | :---: | :---: | :--- | :---: |
 | `PB3` | SCK | SPI1 Clock | AF5 |
-| `PB4` | MISO / MOSI | SPI1 Data Line | AF5 |
-| `PB5` | MOSI / MISO | SPI1 Data Line | AF5 |
+| `PB4` | MISO | SPI1 Data Line | AF5 |
+| `PB5` | MOSI | SPI1 Data Line | AF5 |
 | `PB6` | DC (RS) | Data / Command Select Line | Output (Pull-Up) |
 | `PB7` | RST | Hardware Reset Line | Output (Pull-Up) |
 | `PB9` | CS | Chip Select Line | Output (Pull-Up) |
